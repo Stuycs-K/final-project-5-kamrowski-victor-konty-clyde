@@ -1,17 +1,20 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Victor Kamrowski
 
-### date x
+### May 22nd 2024
 
-info
+In class:
+- created Minesweeper, Field, and Tile classes
+- created Field and Tile constructors
+- created Minesweeper, Field, and Tile instance variables
 
 ### date y
 
 info
 
 
-## GROUP MEMBER 2
+## Clyde Konty
 
 ### date x
 
