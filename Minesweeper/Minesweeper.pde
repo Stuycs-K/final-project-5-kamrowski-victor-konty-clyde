@@ -1,2 +1,4 @@
 //Minesweeper class
-public double percentMines;
+public static double percentMines;
+boolean gameStarted;
+double time;
