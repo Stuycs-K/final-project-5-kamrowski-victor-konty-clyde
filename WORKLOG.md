@@ -12,16 +12,22 @@ In class:
 At home:
 - Added xCoord and yCoord instance variables to Tile class
 - Added showProperty method which needs Minesweeper class made to test
-### date y
+### May 23rd 2024
 
-info
+In class:
+- Figured out working with all the branches in class with clyde
+- Partially created markOrUnmark method in Tile, and added more neccessary instance variables
+
 
 
 ## Clyde Konty
 
-### date x
+### May 23rd 2024
 
-info
+In class:
+- Created display in tile class
+- Started setup in minesweeper class
+- Created display, getwidth, and getlength in field class
 
 ### date y
 
