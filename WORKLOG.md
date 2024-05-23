@@ -9,6 +9,9 @@ In class:
 - created Field and Tile constructors
 - created Minesweeper, Field, and Tile instance variables
 
+At home:
+- Added xCoord and yCoord instance variables to Tile class
+- Added showProperty method which needs Minesweeper class made to test
 ### date y
 
 info

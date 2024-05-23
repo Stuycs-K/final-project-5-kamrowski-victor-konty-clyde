@@ -6,9 +6,10 @@ private boolean isMine;
 private boolean isMarked;
 private int xCoord;
 private int yCoord;
+private int tileSize;
 
 public Tile(){
-hasBeenClicked = false;
+hasBeenClicked = true;
 neighborCount = -1;
 //if(Math.random()<percentMines){
 //isMine = true;
@@ -17,6 +18,9 @@ neighborCount = -1;
 isMine = false;
 //}
 isMarked = false;
+xCoord = 100;
+yCoord = 100;
+tileSize = 10;
 }
 
 public void showProperty(){
