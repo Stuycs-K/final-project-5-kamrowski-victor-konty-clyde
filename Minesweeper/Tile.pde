@@ -28,9 +28,21 @@ if(hasBeenClicked){
 if(!isMine){
 text("" + neighborCount, xCoord, yCoord);
 }else{
-triangle(xCoord-1,yCoord,xCoord,yCoord+1,xCoord,yCoord-1);
+  fill(255,255,255);
+triangle(xCoord-10,yCoord,xCoord,yCoord+10,xCoord,yCoord-10);
 }
 
+}
+}
+
+public void markOrUnmark(){
+isMarked = !isMarked;
+if(isMarked){
+  fill(255,0,0);
+triangle(xCoord-1,yCoord,xCoord,yCoord+1,xCoord,yCoord-1);
+}else{
+fill(153);
+rect(xCoord,yCoord,
 }
 }
 
