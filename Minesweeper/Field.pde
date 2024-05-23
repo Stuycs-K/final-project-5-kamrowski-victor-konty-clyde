@@ -15,4 +15,20 @@ mineField[x][y] = new Tile();
 }
 }
 
+
+public void display() {
+  for (int col = 0; col < mineField[0].length; col++) {
+    for (int row = 0; row < mineField.length; row++) {
+      mineField[row][col].display();
+    }
+  }
+}
+
+public int getWidth() {
+ return fieldWidth; 
+}
+
+public int getLength() {
+ return fieldHeight; 
+}
 }
