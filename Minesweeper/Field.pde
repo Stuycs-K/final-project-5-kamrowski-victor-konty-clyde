@@ -3,6 +3,7 @@ public class Field{
 private Tile[][] mineField;
 private int fieldWidth;
 private int fieldHeight;
+private int tilesSize;
 
 public Field(int widthF, int heightF){
   fieldWidth = widthF;
@@ -13,6 +14,7 @@ for(int y = 0;y<widthF;y++){
 mineField[x][y] = new Tile(x,y);
 }
 }
+tilesSize = mineField[0][0].getTileSize();
 }
 
 
@@ -31,4 +33,14 @@ public int getWidth() {
 public int getLength() {
  return fieldHeight; 
 }
+
+
+public int getTilesSize(){
+return tilesSize;
+}
+
+public Tile[][] getMineField(){
+return mineField;
+}
+
 }
