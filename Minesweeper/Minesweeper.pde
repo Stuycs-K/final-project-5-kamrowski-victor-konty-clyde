@@ -5,6 +5,7 @@ private double time;
 private Field board;
 
 void setup() {
-  size(100,100);
+  size(1000,1000);
   board = new Field(10,10);
+  board.display();
 }
