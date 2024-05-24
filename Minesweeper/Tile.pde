@@ -10,7 +10,7 @@ private int yCoord;
 private int tileSize;
 
 public Tile(int r,int c){
-hasBeenClicked = true;
+hasBeenClicked = false;
 neighborCount = -1;
 row =r; col=c;
 //if(Math.random()<percentMines){
@@ -20,9 +20,9 @@ row =r; col=c;
 isMine = false;
 //}
 isMarked = false;
-xCoord = c*100;
-yCoord = r*100;
 tileSize = 100;
+xCoord = c*tileSize;
+yCoord = r*tileSize;
 }
 
 public void showProperty(){
@@ -44,13 +44,26 @@ if(isMarked){
 triangle(xCoord-1,yCoord,xCoord,yCoord+1,xCoord,yCoord-1);
 }else{
 fill(153);
-rect(xCoord,yCoord,
+rect(xCoord,yCoord,0.5%tileSize,0.5*tileSize);
 }
 }
 
 public void display() {
+  fill(153);
  square(xCoord,yCoord,tileSize);
  showProperty();
 }
+
+
+
+public int getTileSize(){
+return tileSize;
+}
+
+public void clicked(){
+hasBeenClicked = true;
+showProperty();
+}
+
 
 }
