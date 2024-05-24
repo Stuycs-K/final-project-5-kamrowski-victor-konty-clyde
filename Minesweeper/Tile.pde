@@ -20,9 +20,9 @@ row =r; col=c;
 isMine = false;
 //}
 isMarked = false;
-xCoord = (c-1)*100;
+xCoord = c*100;
 yCoord = r*100;
-tileSize = 10;
+tileSize = 100;
 }
 
 public void showProperty(){
