@@ -4,10 +4,12 @@ private Tile[][] mineField;
 private int fieldWidth;
 private int fieldHeight;
 private int tilesSize;
+private boolean lost, won;
 
 public Field(int widthF, int heightF){
   fieldWidth = widthF;
   fieldHeight = heightF;
+  lost = false; won = false;
 mineField = new Tile[fieldHeight][fieldWidth];
 for (int x = 0;x<heightF;x++){
 for(int y = 0;y<widthF;y++){
@@ -24,13 +26,21 @@ public void display() {
       mineField[row][col].display();
     }
   }
+  if (lost) {
+    fill(200,0,0);
+  square(500,250,250);
+textSize(56);
+fill(0,200,0);
+text("You Lost",500,500);
+  }
 }
+
 
 public int getWidth() {
  return fieldWidth; 
 }
 
-public int getLength() {
+public int getHeight() {
  return fieldHeight; 
 }
 
@@ -41,6 +51,13 @@ return tilesSize;
 
 public Tile[][] getMineField(){
 return mineField;
+}
+
+public void loss() {
+ lost =true; 
+}
+public void win() {
+ won = true; 
 }
 
 }

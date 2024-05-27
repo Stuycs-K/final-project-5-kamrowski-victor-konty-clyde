@@ -33,6 +33,7 @@ text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
 }else{
   fill(255,0,0);
 triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
+board.loss();
 }
 
 }
@@ -55,6 +56,18 @@ public void display() {
  showProperty();
 }
 
+public void setNeighbors(){
+  if (isMine) return;
+  int ans = 0;
+  for(int r = row-1; r<row+2; r++){
+    for (int c=col-1; c<col+2; c++){
+      if (r >= 0 && r < board.getHeight() && c>=0 && c < board.getWidth() && board.getMineField()[r][c].isMine == true){
+        ans ++;
+      }
+    }}
+   neighborCount = ans; 
+   
+}
 
 
 public int getTileSize(){
@@ -70,5 +83,7 @@ public void changeMine(){
 isMine = !isMine;
 }
 
-
+public boolean isMine(){
+ return isMine; 
+}
 }
