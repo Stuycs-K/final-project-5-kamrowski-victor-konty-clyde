@@ -10,21 +10,28 @@ void setup() {
   board.display();
 }
 
+void draw(){
+background(255);
+board.display();
+}
+
 void mousePressed(){
-double xVal = pmouseX;
-double yVal = pmouseY;
+double xVal = mouseX;
+double yVal = mouseY;
 int rowS = -1;
 int colS = -1;
 for(int x = 0;x<board.getWidth();x++){
-if(xVal-(board.getTilesSize()*x)<board.getTilesSize()){
+if(xVal>x*board.getTilesSize() && xVal<(x+1)*board.getTilesSize()){
 colS = x;
-continue;
+break;
 }}
 for(int y = 0;y<board.getLength();y++){
-if(yVal-(board.getTilesSize()*y)<board.getTilesSize()){
+if(yVal>y*board.getTilesSize() && yVal<(y+1)*board.getTilesSize()){
 rowS = y;
-continue;
+break;
 }
 }
+if(rowS != -1 && colS != -1){
 board.getMineField()[rowS][colS].clicked();
+}
 }

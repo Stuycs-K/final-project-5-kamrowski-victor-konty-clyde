@@ -28,10 +28,11 @@ yCoord = r*tileSize;
 public void showProperty(){
 if(hasBeenClicked){
 if(!isMine){
-text("" + neighborCount, xCoord+3, yCoord+3);
+  fill(255);
+text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
 }else{
-  fill(255,255,255);
-triangle(xCoord-10,yCoord,xCoord,yCoord+10,xCoord,yCoord-10);
+  fill(255,0,0);
+triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
 }
 
 }
