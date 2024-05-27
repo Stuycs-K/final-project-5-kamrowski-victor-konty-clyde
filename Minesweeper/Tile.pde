@@ -33,6 +33,7 @@ text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
 }else{
   fill(255,0,0);
 triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
+board.loss();
 }
 
 }

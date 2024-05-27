@@ -4,6 +4,7 @@ private boolean gameStarted;
 private double time;
 private Field board;
 
+
 void setup() {
   size(1000,1000);
   board = new Field(10,10);
@@ -16,6 +17,10 @@ void setup() {
   }
   }
   }
+  for(int x = 0;x<board.getLength();x++){
+  for(int y = 0;y<board.getWidth();y++){
+    board.setNeighbors(x,y);
+  }}
 }
 
 void draw(){
