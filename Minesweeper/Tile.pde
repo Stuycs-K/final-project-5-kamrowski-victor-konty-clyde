@@ -66,5 +66,9 @@ hasBeenClicked = true;
 showProperty();
 }
 
+public void changeMine(){
+isMine = !isMine;
+}
+
 
 }

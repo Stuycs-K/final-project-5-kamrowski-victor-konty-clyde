@@ -8,6 +8,14 @@ void setup() {
   size(1000,1000);
   board = new Field(10,10);
   board.display();
+  percentMines = .20;
+  for(int x = 0;x<board.getLength();x++){
+  for(int y = 0;y<board.getWidth();y++){
+  if (Math.random()<percentMines){
+  board.getMineField()[x][y].changeMine();
+  }
+  }
+  }
 }
 
 void draw(){
