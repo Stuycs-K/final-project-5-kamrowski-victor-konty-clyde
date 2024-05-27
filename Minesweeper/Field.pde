@@ -35,11 +35,12 @@ text("You Lost",500,500);
   }
 }
 
+
 public int getWidth() {
  return fieldWidth; 
 }
 
-public int getLength() {
+public int getHeight() {
  return fieldHeight; 
 }
 

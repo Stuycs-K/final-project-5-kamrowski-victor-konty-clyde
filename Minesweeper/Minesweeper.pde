@@ -10,16 +10,16 @@ void setup() {
   board = new Field(10,10);
   board.display();
   percentMines = .20;
-  for(int x = 0;x<board.getLength();x++){
-  for(int y = 0;y<board.getWidth();y++){
+  for(int y = 0;y<board.getHeight();y++){
+  for(int x = 0;x<board.getWidth();x++){
   if (Math.random()<percentMines){
-  board.getMineField()[x][y].changeMine();
+  board.getMineField()[y][x].changeMine();
   }
   }
   }
-  for(int x = 0;x<board.getLength();x++){
-  for(int y = 0;y<board.getWidth();y++){
-    board.setNeighbors(x,y);
+  for(int y = 0;y<board.getHeight();y++){
+  for(int x = 0;x<board.getWidth();x++){
+    board.getMineField()[y][x].setNeighbors();
   }}
 }
 
@@ -38,7 +38,7 @@ if(xVal>x*board.getTilesSize() && xVal<(x+1)*board.getTilesSize()){
 colS = x;
 break;
 }}
-for(int y = 0;y<board.getLength();y++){
+for(int y = 0;y<board.getHeight();y++){
 if(yVal>y*board.getTilesSize() && yVal<(y+1)*board.getTilesSize()){
 rowS = y;
 break;
