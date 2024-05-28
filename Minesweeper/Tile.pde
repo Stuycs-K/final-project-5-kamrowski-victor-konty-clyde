@@ -75,7 +75,7 @@ public void fillIn(){
   for(int r = row-1; r<row+2; r++){
     for (int c=col-1; c<col+2; c++){
       if (r >= 0 && r < board.getHeight() && c>=0 && c < board.getWidth() && !(r==row && c==col)){
-        board.getMineField()[r][c].clicked();
+        if (!board.getMineField()[r][c].hasBeenClicked()) board.getMineField()[r][c].clicked();
       }}
     } 
 }
@@ -101,6 +101,9 @@ public void makeNotMine(){
 isMine = false;
 }
 
+public boolean hasBeenClicked(){
+ return hasBeenClicked; 
+}
 
 public void make0(){
 isMine = false;
