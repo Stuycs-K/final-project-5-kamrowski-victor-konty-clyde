@@ -8,6 +8,7 @@ private Field board;
 void setup() {
   size(1000,1000);
   board = new Field(10,10);
+  gameStarted = false;
   board.display();
   percentMines = .20;
   for(int y = 0;y<board.getHeight();y++){
@@ -17,10 +18,6 @@ void setup() {
   }
   }
   }
-  for(int y = 0;y<board.getHeight();y++){
-  for(int x = 0;x<board.getWidth();x++){
-    board.getMineField()[y][x].setNeighbors();
-  }}
 }
 
 void draw(){
@@ -44,7 +41,16 @@ rowS = y;
 break;
 }
 }
-if(rowS != -1 && colS != -1){
+  if(!gameStarted){
+  board.getMineField()[rowS][colS].make0();
+  for(int y = 0;y<board.getHeight();y++){
+  for(int x = 0;x<board.getWidth();x++){
+    board.getMineField()[y][x].setNeighbors();
+  }}
+  gameStarted = true;
+  board.getMineField()[rowS][colS].clicked();
+  }
+else if(rowS != -1 && colS != -1){
 board.getMineField()[rowS][colS].clicked();
 }
 }

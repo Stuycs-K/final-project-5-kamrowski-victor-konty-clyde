@@ -86,4 +86,20 @@ isMine = !isMine;
 public boolean isMine(){
  return isMine; 
 }
+
+public void makeNotMine(){
+isMine = false;
+}
+
+
+public void make0(){
+isMine = false;
+for(int r = row-1; r<row+2; r++){
+    for (int c=col-1; c<col+2; c++){
+      if (r >= 0 && r < board.getHeight() && c>=0 && c < board.getWidth()){
+        board.getMineField()[r][c].makeNotMine();
+      }
+    }}
+}
+
 }
