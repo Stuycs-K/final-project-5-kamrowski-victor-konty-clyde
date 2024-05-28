@@ -30,6 +30,7 @@ if(hasBeenClicked){
 if(!isMine){
   fill(255);
 text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
+if (neighborCount == 0) this.fillIn();
 }else{
   fill(255,0,0);
 triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
@@ -69,6 +70,15 @@ public void setNeighbors(){
    
 }
 
+
+public void fillIn(){
+  for(int r = row-1; r<row+2; r++){
+    for (int c=col-1; c<col+2; c++){
+      if (r >= 0 && r < board.getHeight() && c>=0 && c < board.getWidth() && !(r==row && c==col)){
+        board.getMineField()[r][c].clicked();
+      }}
+    } 
+}
 
 public int getTileSize(){
 return tileSize;
