@@ -28,8 +28,13 @@ yCoord = r*tileSize;
 public void showProperty(){
 if(hasBeenClicked){
 if(!isMine){
-  fill(255);
+  if (neighborCount != 0) {
+  fill(255); textSize(56);
 text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
+  }else{
+    fill(255);
+  square(xCoord,yCoord,tileSize);
+  }
 if (neighborCount == 0) this.fillIn();
 }else{
   fill(255,0,0);
