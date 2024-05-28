@@ -28,10 +28,12 @@ yCoord = r*tileSize;
 public void showProperty(){
 if(hasBeenClicked){
 if(!isMine){
-text("" + neighborCount, xCoord+3, yCoord+3);
+  fill(255);
+text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
 }else{
-  fill(255,255,255);
-triangle(xCoord-10,yCoord,xCoord,yCoord+10,xCoord,yCoord-10);
+  fill(255,0,0);
+triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
+board.loss();
 }
 
 }
@@ -54,6 +56,18 @@ public void display() {
  showProperty();
 }
 
+public void setNeighbors(){
+  if (isMine) return;
+  int ans = 0;
+  for(int r = row-1; r<row+2; r++){
+    for (int c=col-1; c<col+2; c++){
+      if (r >= 0 && r < board.getHeight() && c>=0 && c < board.getWidth() && board.getMineField()[r][c].isMine == true){
+        ans ++;
+      }
+    }}
+   neighborCount = ans; 
+   
+}
 
 
 public int getTileSize(){
@@ -65,5 +79,27 @@ hasBeenClicked = true;
 showProperty();
 }
 
+public void changeMine(){
+isMine = !isMine;
+}
+
+public boolean isMine(){
+ return isMine; 
+}
+
+public void makeNotMine(){
+isMine = false;
+}
+
+
+public void make0(){
+isMine = false;
+for(int r = row-1; r<row+2; r++){
+    for (int c=col-1; c<col+2; c++){
+      if (r >= 0 && r < board.getHeight() && c>=0 && c < board.getWidth()){
+        board.getMineField()[r][c].makeNotMine();
+      }
+    }}
+}
 
 }
