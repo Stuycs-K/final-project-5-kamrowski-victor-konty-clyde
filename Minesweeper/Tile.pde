@@ -8,9 +8,10 @@ private int row,col;
 private int xCoord;
 private int yCoord;
 private int tileSize;
+private boolean hasBeenFlagged;
 
 public Tile(int r,int c){
-hasBeenClicked = false;
+hasBeenClicked = false; hasBeenFlagged = false;
 neighborCount = -1;
 row =r; col=c;
 //if(Math.random()<percentMines){
@@ -20,7 +21,7 @@ row =r; col=c;
 isMine = false;
 //}
 isMarked = false;
-tileSize = 100;
+tileSize = 70;
 xCoord = c*tileSize;
 yCoord = r*tileSize;
 }
@@ -28,14 +29,24 @@ yCoord = r*tileSize;
 public void showProperty(){
 if(hasBeenClicked){
 if(!isMine){
-  fill(255);
+  if (neighborCount != 0) {
+  fill(255); textSize(40);
 text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
+  }else{
+    fill(255);
+  square(xCoord,yCoord,tileSize);
+  }
+if (neighborCount == 0) this.fillIn();
 }else{
   fill(255,0,0);
 triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
 board.loss();
 }
 
+}
+if (hasBeenFlagged) {
+  fill(0,0,255);
+triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
 }
 }
 
@@ -70,11 +81,26 @@ public void setNeighbors(){
 }
 
 
+public void fillIn(){
+  for(int r = row-1; r<row+2; r++){
+    for (int c=col-1; c<col+2; c++){
+      if (r >= 0 && r < board.getHeight() && c>=0 && c < board.getWidth() && !(r==row && c==col)){
+        if (!board.getMineField()[r][c].hasBeenClicked()) board.getMineField()[r][c].clicked();
+      }}
+    } 
+}
+
 public int getTileSize(){
 return tileSize;
 }
 
 public void clicked(){
+  if (hasBeenFlagged) {
+   hasBeenFlagged = false;
+   fill(255);
+triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
+return;
+  }
 hasBeenClicked = true;
 showProperty();
 }
@@ -86,4 +112,27 @@ isMine = !isMine;
 public boolean isMine(){
  return isMine; 
 }
+
+public void makeNotMine(){
+isMine = false;
+}
+
+public boolean hasBeenClicked(){
+ return hasBeenClicked; 
+}
+
+public void make0(){
+isMine = false;
+for(int r = row-1; r<row+2; r++){
+    for (int c=col-1; c<col+2; c++){
+      if (r >= 0 && r < board.getHeight() && c>=0 && c < board.getWidth()){
+        board.getMineField()[r][c].makeNotMine();
+      }
+    }}
+}
+
+public void placeFlag(){
+hasBeenFlagged = true;
+}
+
 }

@@ -56,6 +56,9 @@ return mineField;
 public void loss() {
  lost =true; 
 }
+public boolean getLost(){
+ return lost; 
+}
 public void win() {
  won = true; 
 }
