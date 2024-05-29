@@ -5,11 +5,12 @@ private double time;
 private Field board;
 private int totalBombs;
 private int markedBombs;
+private int clickedTiles;
 
 
 void setup() {
   size(1050,1150);
-  board = new Field(15,15);
+  board = new Field(10,10);
   gameStarted = false;
   board.display();
   percentMines = .20;
@@ -32,6 +33,9 @@ if(gameStarted){
 fill(2,2,200);textSize(40);
 int bombHolder = totalBombs-markedBombs;
   text("Bombs left: " + bombHolder + "/" + totalBombs, 335, 35);
+}
+if(board.getHeight()*board.getWidth()-totalBombs==clickedTiles){
+board.win();
 }
 }
 
@@ -85,7 +89,7 @@ public void timer(){
 if(gameStarted && !board.getLost()){
 time = time +(1.0/57.25);
 }
-else if(board.getLost()){
+else if(board.getLost() || board.getWin()){
 return;
 }
 }
