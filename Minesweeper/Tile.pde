@@ -21,7 +21,7 @@ row =r; col=c;
 isMine = false;
 //}
 isMarked = false;
-tileSize = 40;
+tileSize = 70;
 xCoord = c*tileSize;
 yCoord = r*tileSize+70;
 }

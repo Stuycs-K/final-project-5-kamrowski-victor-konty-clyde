@@ -10,12 +10,8 @@ private int clickedTiles;
 
 void setup() {
   size(1050,1150);
-<<<<<<< HEAD
-  board = new Field(10,10);
-=======
   board = new Field(15,15);
   time = 0; totalBombs = 0; markedBombs = 0;
->>>>>>> clyde
   gameStarted = false;
   board.display();
   percentMines = .20;
