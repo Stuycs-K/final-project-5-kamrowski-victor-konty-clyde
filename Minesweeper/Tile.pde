@@ -23,14 +23,14 @@ isMine = false;
 isMarked = false;
 tileSize = 70;
 xCoord = c*tileSize;
-yCoord = r*tileSize+tileSize;
+yCoord = r*tileSize+70;
 }
 
 public void showProperty(){
 if(hasBeenClicked){
 if(!isMine){
   if (neighborCount != 0) {
-  fill(255); textSize(40);
+  fill(255); textSize(0.5*tileSize);
 text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
   }else{
     fill(255);
@@ -97,6 +97,7 @@ return tileSize;
 public void clicked(){
   if (hasBeenFlagged) {
    hasBeenFlagged = false;
+   markedBombs--;
    fill(255);
 triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
 return;
@@ -132,6 +133,7 @@ for(int r = row-1; r<row+2; r++){
 }
 
 public void placeFlag(){
+  markedBombs++;
 hasBeenFlagged = true;
 }
 

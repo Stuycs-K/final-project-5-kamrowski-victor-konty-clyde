@@ -3,6 +3,8 @@ public static double percentMines;
 private boolean gameStarted;
 private double time;
 private Field board;
+private int totalBombs;
+private int markedBombs;
 
 
 void setup() {
@@ -18,11 +20,19 @@ void setup() {
   }
   }
   }
+  fill(2,2,200);textSize(40);
+  text("Time: " + time, 35, 35);
 }
 
 void draw(){
 background(255);
 board.display();
+timer();
+if(gameStarted){
+fill(2,2,200);textSize(40);
+int bombHolder = totalBombs-markedBombs;
+  text("Bombs left: " + bombHolder + "/" + totalBombs, 335, 35);
+}
 }
 
 void mousePressed(){
@@ -39,18 +49,21 @@ colS = x;
 break;
 }}
 for(int y = 0;y<board.getHeight();y++){
-if(yVal>y*board.getTilesSize() && yVal<(y+1)*board.getTilesSize()){
+if(yVal>(y)*board.getTilesSize()+70 && yVal<(y+1)*board.getTilesSize()+70){
 rowS = y;
 break;
 }
 }
 if (mouseButton == LEFT) {
 
-  if(!gameStarted){
+  if(!gameStarted && rowS>=0){
   board.getMineField()[rowS][colS].make0();
   for(int y = 0;y<board.getHeight();y++){
   for(int x = 0;x<board.getWidth();x++){
     board.getMineField()[y][x].setNeighbors();
+    if(board.getMineField()[y][x].isMine()){
+    totalBombs++;
+    }
   }}
   gameStarted = true;
   board.getMineField()[rowS][colS].clicked();
@@ -63,5 +76,16 @@ else if(mouseButton == RIGHT) {
   if(! board.getMineField()[rowS][colS].hasBeenClicked()) {
     board.getMineField()[rowS][colS].placeFlag();
   }
+}
+}
+
+public void timer(){
+  fill(2,2,200);textSize(40);
+  text(String.format("Time: %.1f", time), 35, 35);
+if(gameStarted && !board.getLost()){
+time = time +(1.0/57.25);
+}
+else if(board.getLost()){
+return;
 }
 }
