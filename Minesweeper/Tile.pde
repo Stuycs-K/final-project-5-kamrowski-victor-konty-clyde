@@ -21,7 +21,7 @@ row =r; col=c;
 isMine = false;
 //}
 isMarked = false;
-tileSize = 70;
+tileSize = 40;
 xCoord = c*tileSize;
 yCoord = r*tileSize+70;
 }
@@ -95,6 +95,9 @@ return tileSize;
 }
 
 public void clicked(){
+  if(!hasBeenClicked){
+  clickedTiles++;
+  }
   if (hasBeenFlagged) {
    hasBeenFlagged = false;
    markedBombs--;
@@ -133,7 +136,9 @@ for(int r = row-1; r<row+2; r++){
 }
 
 public void placeFlag(){
+  if(!hasBeenFlagged){
   markedBombs++;
+  }
 hasBeenFlagged = true;
 }
 

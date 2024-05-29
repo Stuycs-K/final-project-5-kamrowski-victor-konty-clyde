@@ -28,10 +28,17 @@ public void display() {
   }
   if (lost) {
     fill(200,0,0);
-  square(500,250,250);
+  square(height/3,width/3,350);
 textSize(56);
 fill(0,200,0);
-text("You Lost",500,500);
+text("You Lost!",height/2.5,width/2.5);
+  }
+  if(won){
+  fill(0,0,200);
+  square(height/3,width/3,350);
+  textSize(56);
+fill(0,200,0);
+text("You Won!",height/2.5,width/2.5);
   }
 }
 
@@ -58,6 +65,10 @@ public void loss() {
 }
 public boolean getLost(){
  return lost; 
+}
+
+public boolean getWin(){
+return won;
 }
 public void win() {
  won = true; 
