@@ -42,6 +42,19 @@ At home:
 - Tweaked setup
 - Fixed Tile constructor
 
-### date y
+### May 27th 2024 
 
-info
+At Home: 
+- added countNeighbors method
+- added lose condition
+
+### May 28th 2024
+
+In Class:
+- added fillIn method for when tile clicked has no mine neighbors
+- fixed accociated bugs
+
+At Home:
+- created flagging
+- fixed bugs accociated with lose condition
+- changed tile sizing
