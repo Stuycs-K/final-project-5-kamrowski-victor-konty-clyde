@@ -10,7 +10,12 @@ private int clickedTiles;
 
 void setup() {
   size(1050,1150);
+<<<<<<< HEAD
   board = new Field(10,10);
+=======
+  board = new Field(15,15);
+  time = 0; totalBombs = 0; markedBombs = 0;
+>>>>>>> clyde
   gameStarted = false;
   board.display();
   percentMines = .20;
@@ -48,12 +53,12 @@ double yVal = mouseY;
 int rowS = -1;
 int colS = -1;
 for(int x = 0;x<board.getWidth();x++){
-if(xVal>x*board.getTilesSize() && xVal<(x+1)*board.getTilesSize()){
+if(xVal>=x*board.getTilesSize() && xVal<=(x+1)*board.getTilesSize()){
 colS = x;
 break;
 }}
 for(int y = 0;y<board.getHeight();y++){
-if(yVal>(y)*board.getTilesSize()+70 && yVal<(y+1)*board.getTilesSize()+70){
+if(yVal>=(y)*board.getTilesSize()+70 && yVal<=(y+1)*board.getTilesSize()+70){
 rowS = y;
 break;
 }
@@ -82,6 +87,13 @@ else if(mouseButton == RIGHT) {
   }
 }
 }
+
+public void keyPressed(){
+ if (key == 'r' || key == 'R') {
+  this.setup(); 
+ }
+}
+
 
 public void timer(){
   fill(2,2,200);textSize(40);

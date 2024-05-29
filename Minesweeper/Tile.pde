@@ -62,7 +62,7 @@ rect(xCoord,yCoord,0.5%tileSize,0.5*tileSize);
 }
 
 public void display() {
-  fill(153);
+  fill(153); 
  square(xCoord,yCoord,tileSize);
  showProperty();
 }
