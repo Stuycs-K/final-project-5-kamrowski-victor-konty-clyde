@@ -23,7 +23,7 @@ isMine = false;
 isMarked = false;
 tileSize = 70;
 xCoord = c*tileSize;
-yCoord = r*tileSize;
+yCoord = r*tileSize+tileSize;
 }
 
 public void showProperty(){

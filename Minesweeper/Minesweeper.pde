@@ -6,7 +6,7 @@ private Field board;
 
 
 void setup() {
-  size(1050,1050);
+  size(1050,1150);
   board = new Field(15,15);
   gameStarted = false;
   board.display();
