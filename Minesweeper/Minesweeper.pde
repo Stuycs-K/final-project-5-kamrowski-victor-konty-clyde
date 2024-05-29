@@ -26,6 +26,9 @@ board.display();
 }
 
 void mousePressed(){
+  if (board.getLost()){
+    return; 
+  }
 double xVal = mouseX;
 double yVal = mouseY;
 int rowS = -1;
