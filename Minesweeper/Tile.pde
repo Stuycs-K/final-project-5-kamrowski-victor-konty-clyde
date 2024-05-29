@@ -8,9 +8,10 @@ private int row,col;
 private int xCoord;
 private int yCoord;
 private int tileSize;
+private boolean hasBeenFlagged;
 
 public Tile(int r,int c){
-hasBeenClicked = false;
+hasBeenClicked = false; hasBeenFlagged = false;
 neighborCount = -1;
 row =r; col=c;
 //if(Math.random()<percentMines){
@@ -20,7 +21,7 @@ row =r; col=c;
 isMine = false;
 //}
 isMarked = false;
-tileSize = 100;
+tileSize = 70;
 xCoord = c*tileSize;
 yCoord = r*tileSize;
 }
@@ -29,7 +30,7 @@ public void showProperty(){
 if(hasBeenClicked){
 if(!isMine){
   if (neighborCount != 0) {
-  fill(255); textSize(56);
+  fill(255); textSize(40);
 text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
   }else{
     fill(255);
@@ -42,6 +43,10 @@ triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord)
 board.loss();
 }
 
+}
+if (hasBeenFlagged) {
+  fill(0,0,255);
+triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
 }
 }
 
@@ -90,6 +95,12 @@ return tileSize;
 }
 
 public void clicked(){
+  if (hasBeenFlagged) {
+   hasBeenFlagged = false;
+   fill(255);
+triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
+return;
+  }
 hasBeenClicked = true;
 showProperty();
 }
@@ -118,6 +129,10 @@ for(int r = row-1; r<row+2; r++){
         board.getMineField()[r][c].makeNotMine();
       }
     }}
+}
+
+public void placeFlag(){
+hasBeenFlagged = true;
 }
 
 }

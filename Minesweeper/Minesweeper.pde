@@ -6,8 +6,8 @@ private Field board;
 
 
 void setup() {
-  size(1000,1000);
-  board = new Field(10,10);
+  size(1050,1050);
+  board = new Field(15,15);
   gameStarted = false;
   board.display();
   percentMines = .20;
@@ -41,6 +41,8 @@ rowS = y;
 break;
 }
 }
+if (mouseButton == LEFT) {
+
   if(!gameStarted){
   board.getMineField()[rowS][colS].make0();
   for(int y = 0;y<board.getHeight();y++){
@@ -52,5 +54,11 @@ break;
   }
 else if(rowS != -1 && colS != -1){
 board.getMineField()[rowS][colS].clicked();
+}
+}
+else if(mouseButton == RIGHT) {
+  if(! board.getMineField()[rowS][colS].hasBeenClicked()) {
+    board.getMineField()[rowS][colS].placeFlag();
+  }
 }
 }
