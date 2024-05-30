@@ -57,7 +57,7 @@ if(!isMine){
 text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
   }else{
     fill(255);
-  square(xCoord,yCoord,tileSize);
+  image(clickTile,xCoord,yCoord,tileSize,tileSize);
   }
 if (neighborCount == 0) this.fillIn();
 }else{
@@ -70,24 +70,14 @@ board.loss();
 }
 if (hasBeenFlagged) {
   fill(0,0,255);
-triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
+image(flag,xCoord,yCoord,tileSize,tileSize);
 }
 }
 
-public void markOrUnmark(){
-isMarked = !isMarked;
-if(isMarked){
-  fill(255,0,0);
-triangle(xCoord-1,yCoord,xCoord,yCoord+1,xCoord,yCoord-1);
-}else{
-fill(153);
-rect(xCoord,yCoord,0.5%tileSize,0.5*tileSize);
-}
-}
 
 public void display() {
   fill(153); 
- square(xCoord,yCoord,tileSize);
+ image(tile,xCoord,yCoord,tileSize,tileSize);
  showProperty();
 }
 
@@ -126,7 +116,7 @@ public void clicked(){
    hasBeenFlagged = false;
    markedBombs--;
    fill(255);
-triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
+//triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
 return;
   }
 hasBeenClicked = true;
