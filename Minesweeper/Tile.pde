@@ -30,7 +30,30 @@ public void showProperty(){
 if(hasBeenClicked){
 if(!isMine){
   if (neighborCount != 0) {
-  fill(255); textSize(0.5*tileSize);
+    if(neighborCount==1){
+  fill(#1123D8);}
+  else if(neighborCount==2){
+    fill(#317C23);
+  }
+  else if(neighborCount==3){
+  fill(#FA001D);
+  }
+  else if(neighborCount==4){
+  fill(#18295A);
+  }
+  else if(neighborCount==5){
+  fill(#6F2936);
+  }
+  else if(neighborCount==6){
+  fill(#35837F);
+  }
+  else if(neighborCount==7){
+  fill(#121027);
+  }
+  else if(neighborCount==8){
+  fill(#777681);
+  }
+  textSize(0.5*tileSize);
 text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
   }else{
     fill(255);

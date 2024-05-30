@@ -10,8 +10,8 @@ private int clickedTiles;
 
 
 void setup() {
-  size(900,970);
-  time = 0; totalBombs = 0; markedBombs = 0;
+  size(1000,700+70);
+  time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0;
   gameStarted = false; modeSelected = false;
 }
 
@@ -31,9 +31,9 @@ timer();
 if(gameStarted){
 fill(2,2,200);textSize(40);
 int bombHolder = totalBombs-markedBombs;
-  text("Bombs left: " + bombHolder + "/" + totalBombs, 335, 35);
+  text("Bombs left: " + bombHolder + "/" + totalBombs, 235, 35);
 }
-if(board.getHeight()*board.getWidth()-totalBombs==clickedTiles){
+if(board.getHeight()*board.getWidth()-totalBombs<=clickedTiles){
 board.win();
 }
 }
@@ -60,7 +60,7 @@ rowS = y;
 break;
 }
 }
-if (mouseButton == LEFT) {
+if (mouseButton == LEFT && rowS!=-1&&colS!=-1) {
 
   if(!gameStarted && rowS>=0){
   board.getMineField()[rowS][colS].make0();
@@ -99,19 +99,19 @@ public void keyPressed(){
 
 public void initialize(int difficulty) {
   if (difficulty == 1) {
-    board = new Field(10,10,90);
+    board = new Field(9,9,(height-70)/9);
     board.display();
-    percentMines = .20;
+    percentMines = .16;
   }
   if (difficulty == 2) {
-    board = new Field(12,12,75);
+    board = new Field(16,16,(height-70)/16);
     board.display();
-    percentMines = .24;
+    percentMines = .17;
   }
   if (difficulty == 3) {
-    board = new Field(15,15,60);
+    board = new Field(30,16,30);
     board.display();
-    percentMines = .28;
+    percentMines = .20;
   }
   for(int y = 0;y<board.getHeight();y++){
   for(int x = 0;x<board.getWidth();x++){
@@ -130,7 +130,7 @@ public void initialize(int difficulty) {
 public void timer(){
   fill(2,2,200);textSize(40);
   text(String.format("Time: %.1f", time), 35, 35);
-if(gameStarted && !board.getLost()){
+if(gameStarted && !board.getLost() && !board.getWin()){
 time = time +(1.0/57.25);
 }
 else if(board.getLost() || board.getWin()){
