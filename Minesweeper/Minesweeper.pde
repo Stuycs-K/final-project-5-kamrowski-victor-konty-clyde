@@ -10,7 +10,7 @@ private int clickedTiles;
 
 
 void setup() {
-  size(1000,700+70);
+  size(1000,770);
   time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0;
   gameStarted = false; modeSelected = false;
 }
@@ -19,7 +19,7 @@ void draw(){
   if (!modeSelected){
     background(255);
     fill(0,0,255);
-    textSize(40);
+    textSize(40);    
     text("for easy mode, press 1", 100,100);
     text("for medium mode, press 2", 100,250);
     text("for hard mode, press 3", 100,400);
