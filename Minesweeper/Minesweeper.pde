@@ -7,12 +7,17 @@ private Field board;
 private int totalBombs;
 private int markedBombs;
 private int clickedTiles;
+private PImage mine, flag,tile, clickTile;
 
 
 void setup() {
   size(1000,700+70);
   time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0;
   gameStarted = false; modeSelected = false;
+  mine = loadImage("bomb.png");
+  flag = loadImage("flag.jpg");
+  tile = loadImage("tile.jpg");
+  clickTile = loadImage("revealedtile.png");
 }
 
 void draw(){
