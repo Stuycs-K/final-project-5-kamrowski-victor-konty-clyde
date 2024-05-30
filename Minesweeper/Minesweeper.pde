@@ -1,6 +1,7 @@
 //Minesweeper class
 public static double percentMines;
 private boolean gameStarted;
+private boolean modeSelected;
 private double time;
 private Field board;
 private int totalBombs;
@@ -9,38 +10,38 @@ private int clickedTiles;
 
 
 void setup() {
-  size(1050,1150);
-  board = new Field(15,15);
-  time = 0; totalBombs = 0; markedBombs = 0;
-  gameStarted = false;
-  board.display();
-  percentMines = .20;
-  for(int y = 0;y<board.getHeight();y++){
-  for(int x = 0;x<board.getWidth();x++){
-  if (Math.random()<percentMines){
-  board.getMineField()[y][x].changeMine();
-  }
-  }
-  }
-  fill(2,2,200);textSize(40);
-  text("Time: " + time, 35, 35);
+  size(1000,700+70);
+  time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0;
+  gameStarted = false; modeSelected = false;
 }
 
 void draw(){
+  if (!modeSelected){
+    background(255);
+    fill(0,0,255);
+    textSize(40);
+    text("for easy mode, press 1", 100,100);
+    text("for medium mode, press 2", 100,250);
+    text("for hard mode, press 3", 100,400);
+    return;
+  }
 background(255);
 board.display();
 timer();
 if(gameStarted){
 fill(2,2,200);textSize(40);
 int bombHolder = totalBombs-markedBombs;
-  text("Bombs left: " + bombHolder + "/" + totalBombs, 335, 35);
+  text("Bombs left: " + bombHolder + "/" + totalBombs, 235, 35);
 }
-if(board.getHeight()*board.getWidth()-totalBombs==clickedTiles){
+if(board.getHeight()*board.getWidth()-totalBombs<=clickedTiles){
 board.win();
 }
 }
 
 void mousePressed(){
+  if (! modeSelected) {
+   return; 
+  }
   if (board.getLost()){
     return; 
   }
@@ -59,7 +60,7 @@ rowS = y;
 break;
 }
 }
-if (mouseButton == LEFT) {
+if (mouseButton == LEFT && rowS!=-1&&colS!=-1) {
 
   if(!gameStarted && rowS>=0){
   board.getMineField()[rowS][colS].make0();
@@ -85,16 +86,51 @@ else if(mouseButton == RIGHT) {
 }
 
 public void keyPressed(){
- if (key == 'r' || key == 'R') {
+  if (! modeSelected) {
+   if (key == '1') initialize(1); 
+   if (key == '2') initialize(2); 
+   if (key == '3') initialize(3); 
+  }
+ 
+  if (key == 'r' || key == 'R') {
   this.setup(); 
  }
 }
+
+public void initialize(int difficulty) {
+  if (difficulty == 1) {
+    board = new Field(9,9,(height-70)/9);
+    board.display();
+    percentMines = .16;
+  }
+  if (difficulty == 2) {
+    board = new Field(16,16,(height-70)/16);
+    board.display();
+    percentMines = .17;
+  }
+  if (difficulty == 3) {
+    board = new Field(30,16,30);
+    board.display();
+    percentMines = .20;
+  }
+  for(int y = 0;y<board.getHeight();y++){
+  for(int x = 0;x<board.getWidth();x++){
+  if (Math.random()<percentMines){
+  board.getMineField()[y][x].changeMine();
+  }
+  }
+  }
+  fill(2,2,200);textSize(40);
+  text("Time: " + time, 35, 35);
+  modeSelected = true;
+}
+
 
 
 public void timer(){
   fill(2,2,200);textSize(40);
   text(String.format("Time: %.1f", time), 35, 35);
-if(gameStarted && !board.getLost()){
+if(gameStarted && !board.getLost() && !board.getWin()){
 time = time +(1.0/57.25);
 }
 else if(board.getLost() || board.getWin()){
