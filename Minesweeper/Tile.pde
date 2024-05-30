@@ -62,7 +62,8 @@ text("" + neighborCount, xCoord+tileSize/2, yCoord+tileSize/2);
 if (neighborCount == 0) this.fillIn();
 }else{
   fill(255,0,0);
-triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
+//triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
+image(mine,xCoord,yCoord,tileSize,tileSize);
 board.loss();
 }
 
@@ -118,7 +119,7 @@ return tileSize;
 }
 
 public void clicked(){
-  if(!hasBeenClicked){
+  if(!hasBeenClicked && !board.getLost()){
   clickedTiles++;
   }
   if (hasBeenFlagged) {
