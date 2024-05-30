@@ -1,6 +1,7 @@
 //Minesweeper class
 public static double percentMines;
 private boolean gameStarted;
+private boolean modeSelected;
 private double time;
 private Field board;
 private int totalBombs;
@@ -9,24 +10,21 @@ private int clickedTiles;
 
 
 void setup() {
-  size(1050,1150);
-  board = new Field(15,15);
+  size(900,970);
   time = 0; totalBombs = 0; markedBombs = 0;
-  gameStarted = false;
-  board.display();
-  percentMines = .20;
-  for(int y = 0;y<board.getHeight();y++){
-  for(int x = 0;x<board.getWidth();x++){
-  if (Math.random()<percentMines){
-  board.getMineField()[y][x].changeMine();
-  }
-  }
-  }
-  fill(2,2,200);textSize(40);
-  text("Time: " + time, 35, 35);
+  gameStarted = false; modeSelected = false;
 }
 
 void draw(){
+  if (!modeSelected){
+    background(255);
+    fill(0,0,255);
+    textSize(40);
+    text("for easy mode, press 1", 100,100);
+    text("for medium mode, press 2", 100,250);
+    text("for hard mode, press 3", 100,400);
+    return;
+  }
 background(255);
 board.display();
 timer();
@@ -41,6 +39,9 @@ board.win();
 }
 
 void mousePressed(){
+  if (! modeSelected) {
+   return; 
+  }
   if (board.getLost()){
     return; 
   }
@@ -85,10 +86,45 @@ else if(mouseButton == RIGHT) {
 }
 
 public void keyPressed(){
- if (key == 'r' || key == 'R') {
+  if (! modeSelected) {
+   if (key == '1') initialize(1); 
+   if (key == '2') initialize(2); 
+   if (key == '3') initialize(3); 
+  }
+ 
+  if (key == 'r' || key == 'R') {
   this.setup(); 
  }
 }
+
+public void initialize(int difficulty) {
+  if (difficulty == 1) {
+    board = new Field(10,10,90);
+    board.display();
+    percentMines = .20;
+  }
+  if (difficulty == 2) {
+    board = new Field(12,12,75);
+    board.display();
+    percentMines = .24;
+  }
+  if (difficulty == 3) {
+    board = new Field(15,15,60);
+    board.display();
+    percentMines = .28;
+  }
+  for(int y = 0;y<board.getHeight();y++){
+  for(int x = 0;x<board.getWidth();x++){
+  if (Math.random()<percentMines){
+  board.getMineField()[y][x].changeMine();
+  }
+  }
+  }
+  fill(2,2,200);textSize(40);
+  text("Time: " + time, 35, 35);
+  modeSelected = true;
+}
+
 
 
 public void timer(){
