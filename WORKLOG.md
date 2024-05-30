@@ -58,3 +58,12 @@ At Home:
 - created flagging
 - fixed bugs accociated with lose condition
 - changed tile sizing
+
+### May 29th 2024
+
+In Class:
+- added keypressed, for reset board
+- added different dimensions
+
+At Home:
+- added difficulty selectors
