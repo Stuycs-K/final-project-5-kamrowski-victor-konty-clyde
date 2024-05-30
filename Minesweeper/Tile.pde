@@ -10,7 +10,7 @@ private int yCoord;
 private int tileSize;
 private boolean hasBeenFlagged;
 
-public Tile(int r,int c){
+public Tile(int r,int c, int tilesize){
 hasBeenClicked = false; hasBeenFlagged = false;
 neighborCount = -1;
 row =r; col=c;
@@ -21,7 +21,7 @@ row =r; col=c;
 isMine = false;
 //}
 isMarked = false;
-tileSize = 70;
+tileSize = tilesize;
 xCoord = c*tileSize;
 yCoord = r*tileSize+70;
 }

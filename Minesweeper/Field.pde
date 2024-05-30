@@ -6,17 +6,17 @@ private int fieldHeight;
 private int tilesSize;
 private boolean lost, won;
 
-public Field(int widthF, int heightF){
+public Field(int widthF, int heightF, int tilesize){
   fieldWidth = widthF;
   fieldHeight = heightF;
   lost = false; won = false;
 mineField = new Tile[fieldHeight][fieldWidth];
 for (int x = 0;x<heightF;x++){
 for(int y = 0;y<widthF;y++){
-mineField[x][y] = new Tile(x,y);
+mineField[x][y] = new Tile(x,y,tilesize);
 }
 }
-tilesSize = mineField[0][0].getTileSize();
+tilesSize = tilesize;
 }
 
 
