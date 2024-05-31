@@ -30,6 +30,7 @@ public void showProperty(){
 if(hasBeenClicked){
 if(!isMine){
   if (neighborCount != 0) {
+    image(clickTile,xCoord,yCoord,tileSize,tileSize);
     if(neighborCount==1){
   fill(#1123D8);}
   else if(neighborCount==2){
