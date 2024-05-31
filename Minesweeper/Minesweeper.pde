@@ -1,5 +1,5 @@
 //Minesweeper class
-public static double percentMines;
+public static int amountMines;
 private boolean gameStarted;
 private boolean modeSelected;
 private double time;
@@ -9,6 +9,7 @@ private int markedBombs;
 private int clickedTiles;
 private PImage mine, flag,tile, clickTile;
 private PFont mineFont;
+public static int minesChanged;
 
 
 void setup() {
@@ -91,6 +92,15 @@ if (mouseButton == LEFT && rowS!=-1&&colS!=-1) {
   }}
   gameStarted = true;
   board.getMineField()[rowS][colS].clicked();
+  int z = minesChanged;
+  while(z>=0){
+  int forHeight = (int)(Math.random()*board.getHeight());
+  int forWidth = (int)(Math.random()*board.getWidth());
+  if(!board.getMineField()[forHeight][forWidth].isMine() && !board.getMineField()[forHeight][forWidth].hasBeenClicked()){
+  board.getMineField()[forHeight][forWidth].changeMine();
+  z--;
+  }
+  }
   }
 else if(rowS != -1 && colS != -1){
 board.getMineField()[rowS][colS].clicked();
@@ -119,23 +129,25 @@ public void initialize(int difficulty) {
   if (difficulty == 1) {
     board = new Field(9,9,(height-70)/9);
     board.display();
-    percentMines = .16;
+    amountMines = 10;
   }
   if (difficulty == 2) {
     board = new Field(16,16,(height-70)/16);
     board.display();
-    percentMines = .17;
+    amountMines = 40;
   }
   if (difficulty == 3) {
     board = new Field(30,16,30);
     board.display();
-    percentMines = .20;
+    amountMines = 99;
   }
-  for(int y = 0;y<board.getHeight();y++){
-  for(int x = 0;x<board.getWidth();x++){
-  if (Math.random()<percentMines){
-  board.getMineField()[y][x].changeMine();
-  }
+  int z = amountMines;
+  while(z>=0){
+  int forHeight = (int)(Math.random()*board.getHeight());
+  int forWidth = (int)(Math.random()*board.getWidth());
+  if(!board.getMineField()[forHeight][forWidth].isMine()){
+  board.getMineField()[forHeight][forWidth].changeMine();
+  z--;
   }
   }
   fill(2,2,200);textSize(40);

@@ -125,7 +125,7 @@ showProperty();
 }
 
 public void changeMine(){
-isMine = !isMine;
+isMine = true;
 }
 
 public boolean isMine(){
@@ -141,6 +141,9 @@ public boolean hasBeenClicked(){
 }
 
 public void make0(){
+  if(isMine()){
+  minesChanged++;
+  }
 isMine = false;
 for(int r = row-1; r<row+2; r++){
     for (int c=col-1; c<col+2; c++){
