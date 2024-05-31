@@ -8,26 +8,39 @@ private int totalBombs;
 private int markedBombs;
 private int clickedTiles;
 private PImage mine, flag,tile, clickTile;
+private PFont mineFont;
 
 
 void setup() {
-  size(1000,700+70);
+  size(1000,770);
   time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0;
   gameStarted = false; modeSelected = false;
   mine = loadImage("bomb.png");
   flag = loadImage("flag.jpg");
   tile = loadImage("tile.jpg");
+  mineFont = loadFont("Constantia-Bold-48.vlw");
   clickTile = loadImage("revealedtile.png");
+  textFont(mineFont);
 }
 
 void draw(){
   if (!modeSelected){
-    background(255);
+    background(170,170,170);
     fill(0,0,255);
-    textSize(40);
-    text("for easy mode, press 1", 100,100);
-    text("for medium mode, press 2", 100,250);
-    text("for hard mode, press 3", 100,400);
+    for(int x = 0; x < 980; x+=70){
+      for (int y = 0; y < 770; y+=70){
+        if (x==0||x==70||x==12*70||x==13*70)
+        image(mine,x,y,70,70);
+        if (y==0||y==70*1||y==70*9||y==70*10)
+        image(mine,x,y,70,70);
+      }
+    }
+        textSize(85); 
+    text("MINESWEEPER",170,250);
+        textSize(50); fill(15,128,255);
+    text("for easy mode, press '1'", 170,375);
+    text("for medium mode, press '2'", 170,485);
+    text("for hard mode, press '3'", 170,595);
     return;
   }
 background(255);

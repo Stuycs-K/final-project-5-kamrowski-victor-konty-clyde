@@ -88,3 +88,12 @@ At Home:
 - created flagging
 - fixed bugs accociated with lose condition
 - changed tile sizing
+
+### May 30th 2024
+
+In Class
+- Worked on importing images for mineField
+
+At Home
+- worked on importing images for homeScreen
+- worked on fontType for homeScreen
