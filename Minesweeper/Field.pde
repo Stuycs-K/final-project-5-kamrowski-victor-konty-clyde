@@ -27,6 +27,12 @@ public void display() {
     }
   }
   if (lost) {
+    for (int col = 0; col < mineField[0].length; col++) {
+    for (int row = 0; row < mineField.length; row++) {
+      if(mineField[row][col].isMine()){
+      mineField[row][col].clicked();
+    }}
+  }
     fill(200,0,0);
   square(height/3,width/3,350);
 textSize(56);
