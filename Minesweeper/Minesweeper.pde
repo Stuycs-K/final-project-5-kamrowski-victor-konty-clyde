@@ -146,17 +146,6 @@ public void initialize(int difficulty) {
 }
 
 
-/*
-public void timer(){
-  fill(2,2,200);textSize(40);
-  text(String.format("Time: %.1f", time), 35, 35);
-if(gameStarted && !board.getLost() && !board.getWin()){
-time = time +(1.0/57.25);
-}
-else if(board.getLost() || board.getWin()){
-return;
-}
-}*/
 
 public void timer(){
   fill(2,2,200);textSize(40);
