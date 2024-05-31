@@ -89,7 +89,6 @@ At Home:
 - fixed bugs accociated with lose condition
 - changed tile sizing
 
-<<<<<<< HEAD
 ### May 29th 2024
 
 In Class:
@@ -98,7 +97,7 @@ In Class:
 
 At Home:
 - added difficulty selectors
-=======
+
 ### May 30th 2024
 
 In Class
@@ -107,4 +106,9 @@ In Class
 At Home
 - worked on importing images for homeScreen
 - worked on fontType for homeScreen
->>>>>>> fa078400ad9a411563c9cdb8564e19447f714ab5
+
+### May 31st 2024
+
+In Class
+- Fixed Timer
+- Started to work on making the # of bombs constant
