@@ -9,11 +9,13 @@ private int markedBombs;
 private int clickedTiles;
 private PImage mine, flag,tile, clickTile;
 private PFont mineFont;
+private double beginning;
 
 
 void setup() {
   size(1000,770);
   time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0;
+  beginning = 0;
   gameStarted = false; modeSelected = false;
   mine = loadImage("bomb.png");
   flag = loadImage("flag.jpg");
@@ -147,11 +149,16 @@ public void initialize(int difficulty) {
 
 public void timer(){
   fill(2,2,200);textSize(40);
-  text(String.format("Time: %.1f", time), 35, 35);
-if(gameStarted && !board.getLost() && !board.getWin()){
-time = time +(1.0/57.25);
-}
-else if(board.getLost() || board.getWin()){
-return;
-}
+  if (gameStarted){
+  text(String.format("Time: %.1f", millis()/1000.0-beginning), 35, 35);
+  }
+  else{
+    text(String.format("Time: %.1f", beginning), 35, 35);
+  }
+  if(beginning==0 && gameStarted == true) {
+    beginning = millis()/1000.0;
+  }
+  else if(board.getLost() || board.getWin()){
+    return;
+  }
 }
