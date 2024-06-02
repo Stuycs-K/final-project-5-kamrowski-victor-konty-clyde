@@ -51,7 +51,7 @@ timer();
 if(gameStarted){
 fill(2,2,200);textSize(40);
 int bombHolder = totalBombs-markedBombs;
-  text("Bombs left: " + bombHolder + "/" + totalBombs, 235, 35);
+  text("Bombs left: " + bombHolder + "/" + totalBombs, 300, 35);
 }
 if(board.getHeight()*board.getWidth()-totalBombs<=clickedTiles){
 board.win();
@@ -150,7 +150,9 @@ public void initialize(int difficulty) {
 public void timer(){
   fill(2,2,200);textSize(40);
   if (gameStarted){
-  text(String.format("Time: %.1f", millis()/1000.0-beginning), 35, 35);
+    double minutes = 0;
+    if ((millis()/1000.0-beginning) >= 30) minutes = (millis()/1000.0-beginning+30)/60-1;      
+  text("Time: "+String.format("0%.0f:",minutes)+String.format("%.1f", (millis()/1000.0-beginning)%60), 35, 35);
   }
   else{
     text(String.format("Time: %.1f", beginning), 35, 35);
