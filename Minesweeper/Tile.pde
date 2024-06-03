@@ -3,7 +3,6 @@ public class Tile{
 private boolean hasBeenClicked;
 private int neighborCount;
 private boolean isMine;
-private boolean isMarked;
 private int row,col;
 private int xCoord;
 private int yCoord;
@@ -21,7 +20,6 @@ row =r; col=c;
 //else{
 isMine = false;
 //}
-isMarked = false;
 tileSize = tilesize;
 xCoord = c*tileSize;
 yCoord = r*tileSize+70;
@@ -118,7 +116,6 @@ public void clicked(){
    hasBeenFlagged = false;
    markedBombs--;
    fill(255);
-//triangle(xCoord,yCoord,xCoord+tileSize/2,yCoord+tileSize,xCoord+tileSize,yCoord);
 return;
   }
 hasBeenClicked = true;

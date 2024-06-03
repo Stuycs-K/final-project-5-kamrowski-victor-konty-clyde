@@ -10,11 +10,13 @@ private int clickedTiles;
 private PImage mine, flag,tile, clickTile;
 private PFont mineFont;
 public static int minesChanged;
+private double beginning;
 
 
 void setup() {
   size(1000,770);
   time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0;
+  beginning = 0;
   gameStarted = false; modeSelected = false;
   mine = loadImage("bomb.png");
   flag = loadImage("flag.jpg");
@@ -50,11 +52,11 @@ timer();
 if(gameStarted){
 fill(2,2,200);textSize(40);
 int bombHolder = totalBombs-markedBombs;
-  text("Bombs left: " + bombHolder + "/" + totalBombs, 235, 35);
-
+  text("Bombs left: " + bombHolder + "/" + totalBombs, 300, 35);
+}
 if(board.getHeight()*board.getWidth()-amountMines<=clickedTiles){
 board.win();
-}}
+}
 }
 
 void mousePressed(){
@@ -150,11 +152,15 @@ public void initialize(int difficulty) {
 
 public void timer(){
   fill(2,2,200);textSize(40);
-  text(String.format("Time: %.1f", time), 35, 35);
-if(gameStarted && !board.getLost() && !board.getWin()){
-time = time +(1.0/57.25);
-}
-else if(board.getLost() || board.getWin()){
-return;
-}
+  if (gameStarted&& !board.getWin() && !board.getLost()){
+    double minutes = 0;
+    if ((millis()/1000.0-beginning) >= 30) minutes = (millis()/1000.0-beginning+30)/60-1;      
+  text("Time: "+String.format("0%.0f:",minutes)+String.format("%.1f", (millis()/1000.0-beginning)%60), 35, 35);
+  }
+  else{
+    text(String.format("Time: %.1f", beginning), 35, 35);
+  }
+  if(beginning==0 && gameStarted == true && !board.getWin() && !board.getLost()) {
+    beginning = millis()/1000.0;
+  }
 }
