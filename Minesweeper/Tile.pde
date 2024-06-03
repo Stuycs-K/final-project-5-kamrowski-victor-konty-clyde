@@ -9,9 +9,10 @@ private int xCoord;
 private int yCoord;
 private int tileSize;
 private boolean hasBeenFlagged;
+private boolean doNotMakeMine;
 
 public Tile(int r,int c, int tilesize){
-hasBeenClicked = false; hasBeenFlagged = false;
+hasBeenClicked = false; hasBeenFlagged = false; doNotMakeMine =false;
 neighborCount = -1;
 row =r; col=c;
 //if(Math.random()<percentMines){
@@ -30,6 +31,7 @@ public void showProperty(){
 if(hasBeenClicked){
 if(!isMine){
   if (neighborCount != 0) {
+    image(clickTile,xCoord,yCoord,tileSize,tileSize);
     if(neighborCount==1){
   fill(#1123D8);}
   else if(neighborCount==2){
@@ -109,7 +111,7 @@ return tileSize;
 }
 
 public void clicked(){
-  if(!hasBeenClicked && !board.getLost()){
+  if(!hasBeenClicked && !board.getLost() && !board.getWin() && !hasBeenFlagged){
   clickedTiles++;
   }
   if (hasBeenFlagged) {
@@ -124,7 +126,7 @@ showProperty();
 }
 
 public void changeMine(){
-isMine = !isMine;
+isMine = true;
 }
 
 public boolean isMine(){
@@ -140,11 +142,16 @@ public boolean hasBeenClicked(){
 }
 
 public void make0(){
+  if(isMine()){
+  minesChanged++;
+  }
 isMine = false;
+doNotMakeMine();
 for(int r = row-1; r<row+2; r++){
     for (int c=col-1; c<col+2; c++){
       if (r >= 0 && r < board.getHeight() && c>=0 && c < board.getWidth()){
         board.getMineField()[r][c].makeNotMine();
+        board.getMineField()[r][c].doNotMakeMine();
       }
     }}
 }
@@ -154,6 +161,16 @@ public void placeFlag(){
   markedBombs++;
   }
 hasBeenFlagged = true;
+}
+public boolean isFlagged(){
+return hasBeenFlagged;
+}
+public void doNotMakeMine(){
+doNotMakeMine = true;
+}
+
+public boolean returndoNotMakeMine(){
+return doNotMakeMine;
 }
 
 }

@@ -51,10 +51,10 @@ if(gameStarted){
 fill(2,2,200);textSize(40);
 int bombHolder = totalBombs-markedBombs;
   text("Bombs left: " + bombHolder + "/" + totalBombs, 235, 35);
-
-if(board.getHeight()*board.getWidth()-amountMines<=clickedTiles){
+}
+if(board.getHeight()*board.getWidth()-totalBombs<=clickedTiles){
 board.win();
-}}
+}
 }
 
 void mousePressed(){
@@ -81,7 +81,7 @@ break;
 }
 if (mouseButton == LEFT && rowS!=-1&&colS!=-1) {
 
-  if(!gameStarted && rowS>=0 && !board.getMineField()[rowS][colS].isFlagged()){
+  if(!gameStarted && rowS>=0){
   board.getMineField()[rowS][colS].make0();
   int z = amountMines;
   while(z>0){
