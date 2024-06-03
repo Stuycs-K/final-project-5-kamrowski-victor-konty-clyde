@@ -109,7 +109,7 @@ return tileSize;
 }
 
 public void clicked(){
-  if(!hasBeenClicked && !board.getLost() && !board.getWin() && !hasBeenFlagged){
+  if(!hasBeenClicked && !board.getLost() && !board.getWin() && !hasBeenFlagged && !isMine){
   clickedTiles++;
   }
   if (hasBeenFlagged) {
