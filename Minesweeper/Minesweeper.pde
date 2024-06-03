@@ -11,11 +11,11 @@ private PImage mine, flag,tile, clickTile;
 private PFont mineFont;
 public static int minesChanged;
 private double beginning;
-
+private boolean is4;
 
 void setup() {
   size(1000,770);
-  time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0;
+  time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0; is4 = false;
   beginning = 0;
   gameStarted = false; modeSelected = false;
   mine = loadImage("bomb.png");
@@ -46,6 +46,7 @@ void draw(){
     text("for hard mode, press '3'", 170,595);
     return;
   }
+  if(!is4){
 background(255);
 board.display();
 timer();
@@ -57,7 +58,7 @@ int bombHolder = totalBombs-markedBombs;
 if(board.getHeight()*board.getWidth()-amountMines<=clickedTiles){
 board.win();
 }
-}
+}}
 
 void mousePressed(){
   if (! modeSelected) {
@@ -120,6 +121,7 @@ public void keyPressed(){
    if (key == '1') initialize(1); 
    if (key == '2') initialize(2); 
    if (key == '3') initialize(3); 
+   if(key == '4') initialize(4);
   }
  
   if (key == 'r' || key == 'R') {
@@ -142,6 +144,30 @@ public void initialize(int difficulty) {
     board = new Field(30,16,30);
     board.display();
     amountMines = 99;
+  }
+  if(difficulty ==4){
+    background(255);
+  image(mine,0,100,100,100);
+  image(flag,100,100,100,100);
+  image(tile,200,100,100,100);
+  image(clickTile,300,100,100,100);
+  is4 = true;
+  fill(#1123D8);
+  text("1", 500, 500);
+    fill(#317C23);
+  text("2", 525, 500);
+  fill(#FA001D);
+  text("3", 550, 500);
+  fill(#18295A);
+  text("4", 575, 500);
+  fill(#6F2936);
+  text("5", 600, 500);
+  fill(#35837F);
+  text("6", 625, 500);
+  fill(#121027);
+  text("7", 650, 500);
+  fill(#777681);
+  text("8", 675, 500);
   }
   fill(2,2,200);textSize(40);
   text("Time: " + time, 35, 35);
