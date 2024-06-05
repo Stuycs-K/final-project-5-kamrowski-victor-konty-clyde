@@ -124,3 +124,14 @@ At Home
 In Class
 - Fixed Timer
 - Started to work on making the # of bombs constant
+
+At Home
+- Continued to work on timer
+
+### June 3rd 2024
+
+In Class 
+- work on win conditions and fixing bugs on timer
+
+At Home
+- fixed the timer (for the final time)
