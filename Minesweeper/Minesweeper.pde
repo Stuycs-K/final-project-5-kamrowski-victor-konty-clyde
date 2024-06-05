@@ -10,13 +10,13 @@ private int clickedTiles;
 private PImage mine, flag,tile, clickTile;
 private PFont mineFont;
 public static int minesChanged;
-private double beginning;
+private double beginning, end;
 
 
 void setup() {
   size(1000,770);
   time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0;
-  beginning = 0;
+  beginning = 0; end = 0;
   gameStarted = false; modeSelected = false;
   mine = loadImage("bomb.png");
   flag = loadImage("flag.jpg");
@@ -149,18 +149,38 @@ public void initialize(int difficulty) {
 }
 
 
-
 public void timer(){
-  fill(2,2,200);textSize(40);
+  double timeNow = 1.0*millis(); 
+  int seconds,tenSeconds,minutes,tenMinutes,tenthSeconds;
   if (gameStarted&& !board.getWin() && !board.getLost()){
-    double minutes = 0;
-    if ((millis()/1000.0-beginning) >= 30) minutes = (millis()/1000.0-beginning+30)/60-1;      
-  text("Time: "+String.format("0%.0f:",minutes)+String.format("%.1f", (millis()/1000.0-beginning)%60), 35, 35);
+      double timeElapsed = timeNow-beginning;
+      tenthSeconds=(int)(timeElapsed/100)%10;
+      seconds=(int)(timeElapsed/1000)%10;
+      tenSeconds=(int)(timeElapsed/10000)%6;
+      minutes=(int)(timeElapsed/60000)%10;
+      tenMinutes=(int)(timeElapsed/600000);
+  }
+  else if(!gameStarted){
+      tenthSeconds=0;
+      seconds=0;
+      tenSeconds=0;
+      minutes=0;
+      tenMinutes=0;
   }
   else{
-    text(String.format("Time: %.1f", beginning), 35, 35);
+      double timeElapsed = end-beginning;
+      tenthSeconds=(int)(timeElapsed/100)%10;
+      seconds=(int)(timeElapsed/1000)%10;
+      tenSeconds=(int)(timeElapsed/10000)%6;
+      minutes=(int)(timeElapsed/60000)%10;
+      tenMinutes=(int)(timeElapsed/600000)%10;
   }
   if(beginning==0 && gameStarted == true && !board.getWin() && !board.getLost()) {
-    beginning = millis()/1000.0;
+    beginning = 1.0*millis();
   }
+  if(end==0 && (board.getWin() || board.getLost())){
+    end = 1.0*millis();
+  }
+  fill(2,2,200);textSize(40);
+  text("Time: "+tenMinutes+minutes+":"+tenSeconds+seconds+"."+tenthSeconds, 35, 35);
 }
