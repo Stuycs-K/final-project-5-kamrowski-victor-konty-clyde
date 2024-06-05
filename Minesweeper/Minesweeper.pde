@@ -11,12 +11,15 @@ private PImage mine, flag,tile, clickTile;
 private PFont mineFont;
 public static int minesChanged;
 private double beginning, end;
-
+private double besttime1;
+private double besttime2;
+private double besttime3;
+public int difficulty;
 
 void setup() {
   size(1000,770);
   time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0;
-  beginning = 0; end = 0;
+  beginning = 0; end = 0; besttime1 = 9999999999.9; besttime2 = 999999999999.9; besttime3 = 999999999999999.9;
   gameStarted = false; modeSelected = false;
   mine = loadImage("bomb.png");
   flag = loadImage("flag.jpg");
@@ -132,16 +135,19 @@ public void initialize(int difficulty) {
     board = new Field(9,9,(height-70)/9);
     board.display();
     amountMines = 10;
+    difficulty = 1;
   }
   if (difficulty == 2) {
     board = new Field(16,16,(height-70)/16);
     board.display();
     amountMines = 40;
+    difficulty = 2;
   }
   if (difficulty == 3) {
     board = new Field(30,16,30);
     board.display();
     amountMines = 99;
+    difficulty = 3;
   }
   fill(2,2,200);textSize(40);
   text("Time: " + time, 35, 35);
@@ -180,6 +186,15 @@ public void timer(){
   }
   if(end==0 && (board.getWin() || board.getLost())){
     end = 1.0*millis();
+    if(difficulty == 1 && besttime1>(end-beginning)/1000){
+    besttime1 = end-beginning;
+    }
+    else if(difficulty == 2 && besttime2>(end-beginning)/1000){
+    besttime2 = end;
+    }else if (difficulty == 3  && besttime3>(end-beginning)/1000){
+    besttime3 = end;
+    }
+    
   }
   fill(2,2,200);textSize(40);
   text("Time: "+tenMinutes+minutes+":"+tenSeconds+seconds+"."+tenthSeconds, 35, 35);

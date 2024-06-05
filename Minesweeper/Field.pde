@@ -38,7 +38,15 @@ public void display() {
 textSize(56);
 fill(0,200,0);
 text("You Lost!",height/2.5,width/2.5);
+textSize(40);
+if(difficulty == 1){
+text("Best time for easy: " + besttime1,height/2.5 + 50,width/2.5 + 50);
+  }else if(difficulty == 2){
+  text("Best time for medium: " + besttime2,height/2.5 + 50,width/2.5 + 50);
   }
+else{
+text("Best time for hard: " + besttime3,height/2.5 + 50,width/2.5 + 50);
+}}
   if(won){
   fill(0,0,200);
   square(height/3,width/3,350);
