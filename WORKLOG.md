@@ -59,6 +59,18 @@ At home (May 30th 2024 but done before school):
 - Slight edits to setup, draw, mousePressed, intiialize, and timer
 - Added colors to tile numbers that represent neighborss with mines (same colors as original game)
 
+### May 30th 2024
+
+In class:
+- Added all bombs exposed when game lost
+- Added images for all types of tiles
+
+### May 31st 2024
+
+In class:
+- Added better images
+- Started working on making mines constant based on level
+
 ## Clyde Konty
 
 ### May 23rd 2024
