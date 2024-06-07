@@ -34,25 +34,34 @@ public void display() {
     }}
   }
     fill(200,0,0);
-  square(height/3,width/3,350);
-textSize(56);
+  //square(height/3,width/3,350);
+textSize(70);
 fill(0,200,0);
 text("You Lost!",height/2.5,width/2.5);
-textSize(40);
-if(difficulty == 1){
-text("Best time for easy: " + besttime1,height/2.5 + 50,width/2.5 + 50);
-  }else if(difficulty == 2){
-  text("Best time for medium: " + besttime2,height/2.5 + 50,width/2.5 + 50);
+textSize(30);
+if(diff == 1){
+text("Best time for easy: " + besttime1,height/2.5,width/2.5 + 150);
+  }else if(diff == 2){
+  text("Best time for medium: " + besttime2,height/2.5,width/2.5 + 150);
   }
 else{
-text("Best time for hard: " + besttime3,height/2.5 + 50,width/2.5 + 50);
+text("Best time for hard: " + besttime3,height/2.5,width/2.5 + 150);
 }}
   if(won){
   fill(0,0,200);
-  square(height/3,width/3,350);
-  textSize(56);
+  //square(height/3,width/3,350);
+  textSize(70);
 fill(0,200,0);
 text("You Won!",height/2.5,width/2.5);
+textSize(30);
+if(diff == 1){
+text("Best time for easy: " + besttime1,height/2.5,width/2.5 + 150);
+  }else if(diff == 2){
+  text("Best time for medium: " + besttime2,height/2.5,width/2.5 + 150);
+  }
+else{
+text("Best time for hard: " + besttime3,height/2.5,width/2.5 + 150);
+}
   }
 }
 
