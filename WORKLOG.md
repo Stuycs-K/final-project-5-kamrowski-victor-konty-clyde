@@ -71,6 +71,28 @@ In class:
 - Added better images
 - Started working on making mines constant based on level
 
+### June 2nd 2024
+
+At home:
+- Fixed marking tile error that would cause game to end early on some occasions
+- Completely finished making mines constant based on level chosen
+- Fixed other small errors and merge conflict
+
+### June 5th 2024
+
+In class:
+- Started working on making a best time for fastest time to complete each level, unfinished
+
+### June 7th 2024
+
+In class:
+- Continued working on making best times, almost finished
+
+### June 8th 2024
+
+At home:
+- Completely finished making best times for each level, fixed all bugs associated with the feature
+
 ## Clyde Konty
 
 ### May 23rd 2024
