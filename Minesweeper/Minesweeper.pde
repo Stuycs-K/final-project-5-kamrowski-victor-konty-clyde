@@ -11,15 +11,15 @@ private PImage mine, flag,tile, clickTile;
 private PFont mineFont;
 public static int minesChanged;
 private double beginning, end;
-private double besttime1;
-private double besttime2;
-private double besttime3;
+public static double besttime1 = 999999999;
+public static double besttime2 = 999999999;
+public static double besttime3 = 999999999;
 public int diff;
 
 void setup() {
   size(1000,770);
   time = 0; totalBombs = 0; markedBombs = 0; clickedTiles = 0; diff = 0;
-  beginning = 0; end = 0; besttime1 = 999999999.99; besttime2 = 999999999999.9; besttime3 = 9999999999999.9;
+  beginning = 0; end = 0;
   gameStarted = false; modeSelected = false;
   mine = loadImage("bomb.png");
   flag = loadImage("flag.jpg");
@@ -194,7 +194,8 @@ public void timer(){
     besttime2 = (end-beginning)/1000;
     }else if (diff == 3  && besttime3>(end-beginning)/1000){
     besttime3 = (end-beginning)/1000;
-    }}
+    }
+  }
     
   }
   fill(2,2,200);textSize(40);
