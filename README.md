@@ -17,3 +17,6 @@ When you have clicked on all tiles that are not a mine without clicking on a min
 When opening the game, press either 1,2, or 3 to begin, despending on what difficulty you want the game to be at. 
 Press 'r' to reset back to the home screen.
 When you win, a best time for the mode will pop up. Play again to beat it!
+
+Minesweeper Presentation Video:
+https://drive.google.com/file/d/1HPHwJA-4SDI_BOao-x6lG_LrbGh9B4Zn/view?t=1
