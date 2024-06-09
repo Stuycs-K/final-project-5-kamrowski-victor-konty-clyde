@@ -12,6 +12,7 @@ When a tile is clicked on, it will display it's properties. If it is not a mine,
 If it is a mine, you lose, and it will display the mine and the lose screen. 
 When you have clicked on all tiles that are not a mine without clicking on a mine, you win.
 The aesthetic and rules are made to mimic the original minesweeper, not any newer variants. All features from the old minesweeper are in this version. 
+To the best of our knowledge, there are no bugs.
 
 ## Instructions
 
