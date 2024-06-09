@@ -2,7 +2,7 @@
 # APCS2 Final Project
 
 ## Group Info
-Hilarious Mice\nClyde Konty and Victor Kamrowski
+Hilarious Mice  Clyde Konty and Victor Kamrowski
 ## Overview
 Minesweeper
 
