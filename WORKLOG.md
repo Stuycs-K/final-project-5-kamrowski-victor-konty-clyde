@@ -157,3 +157,18 @@ In Class
 
 At Home
 - fixed the timer (for the final time)
+
+### June 5th
+
+In Class
+- worked with victor on the best time feature
+
+### June 7th
+
+In Class
+- worked to debug the best time feature
+- started to work on the README.md
+
+At Home
+- finished the README.md
+- recorded the video
