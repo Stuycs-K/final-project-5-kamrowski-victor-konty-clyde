@@ -93,6 +93,12 @@ In class:
 At home:
 - Completely finished making best times for each level, fixed all bugs associated with the feature
 
+### June 9th 2024
+
+At home:
+- Edited prototype completely
+- Recorded project video with Clyde
+
 ## Clyde Konty
 
 ### May 23rd 2024
@@ -158,16 +164,18 @@ In Class
 At Home
 - fixed the timer (for the final time)
 
-### June 5th
+### June 5th 2024
 
 In Class
 - worked with victor on the best time feature
 
-### June 7th
+### June 7th 2024
 
 In Class
 - worked to debug the best time feature
 - started to work on the README.md
+
+### June 9th 2024
 
 At Home
 - finished the README.md
