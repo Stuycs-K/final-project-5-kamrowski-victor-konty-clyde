@@ -22,6 +22,7 @@ The aesthetic and rules are made to mimic the original minesweeper, not any newe
 - If you are sure a tile isn't a mine, you can left click on the tile to click on it. 
 - When clicked, it'll display the number of neighbors that are mines. If it was a mine, you lose! 
 - When you win, a best time for the mode will pop up. Play again to beat it!
+- No shortcuts or library installations in the game as minesweeper is fairly simple
 
 ## Video
 
