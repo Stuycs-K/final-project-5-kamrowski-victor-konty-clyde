@@ -34,17 +34,43 @@ public void display() {
     }}
   }
     fill(200,0,0);
-  square(height/3,width/3,350);
-textSize(56);
-fill(0,200,0);
-text("You Lost!",height/2.5,width/2.5);
+  //square(height/3,width/3,350);
+textSize(40);
+fill(#8B0000);
+text("You Lost! Press R to go back to menu",height/2.5-200,width/2.5);
+textSize(30);
+if(diff == 1){
+  if(besttime1!=999999999)
+text("Best time for easy: " + besttime1,height/2.5,width/2.5 + 150);
+else
+text("No best time recorded!",height/2.5,width/2.5 + 150);
+  }else if(diff == 2){
+    if(besttime2!=999999999)
+  text("Best time for medium: " + besttime2,height/2.5,width/2.5 + 150);
+  else
+  text("No best time recorded!",height/2.5,width/2.5 + 150);
   }
+else{
+  if(besttime3!=999999999)
+text("Best time for hard: " + besttime3,height/2.5,width/2.5 + 150);
+else
+text("No best time recorded!",height/2.5,width/2.5 + 150);
+}}
   if(won){
   fill(0,0,200);
-  square(height/3,width/3,350);
-  textSize(56);
-fill(0,200,0);
-text("You Won!",height/2.5,width/2.5);
+  //square(height/3,width/3,350);
+  textSize(40);
+fill(#8B0000);
+text("You Won! Press R to go back to menu",height/2.5-200,width/2.5);
+textSize(30);
+if(diff == 1){
+text("Best time for easy: " + besttime1,height/2.5,width/2.5 + 150);
+  }else if(diff == 2){
+  text("Best time for medium: " + besttime2,height/2.5,width/2.5 + 150);
+  }
+else{
+text("Best time for hard: " + besttime3,height/2.5,width/2.5 + 150);
+}
   }
 }
 
